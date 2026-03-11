@@ -15,7 +15,7 @@ export default {
       { text: "Fundamentals", link: "/fundamentals/pentest-methodology" },
       { text: "Web", link: "/web/web-methodology" },
       { text: "Active Directory", link: "/active-directory/ad-intro" },
-      { text: "Red Team", link: "/red-team/red-team-methodology" },
+      { text: "Evasion", link: "/evasion/obfuscation" },
       { text: "Cheatsheets", link: "/cheatsheets/linux-cheatsheet" }
     ],
 
