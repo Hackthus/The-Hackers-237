@@ -1,109 +1,140 @@
-# 💀 The H@ckers 237
+<div class="hero">
 
-> Offensive Security Knowledge Base
-> *Learn • Break • Secure*
+<img src="/assets/Logo.png" class="banner" alt="The Hackers 237 Banner">
+<br>
+
+
+### Offensive Security Knowledge Base
+
+*Learn • Break • Secure*
+
+⚡ **Red Team • Pentesting • Offensive Security**
+
+</div>
 
 ---
-
-<!--
-<div style="text-align:center; margin-bottom:20px;">
-  <img src="./assets/logo.png" alt="image Hackers237" style="width:200px;"/>
-</div>
--->
 
 ## 🧠 About
 
-**The H@ckers 237** est un wiki dédié au **Pentesting, Red Team, Cybersécurité Offensive et Hacking Ethique**.
+**The H@ckers 237** est un wiki dédié au **Pentesting, Red Team et Cybersécurité Offensive**.
 
-Ce projet documente des techniques utilisées dans les tests d’intrusion modernes :
-
-* 🔎 Reconnaissance
-* 📡 Scanning
-* 🔐 Exploitation
-* 🧱 Privilege Escalation
-* 🔁 Pivoting
-* 🧬 Post Exploitation
-* 🎯 Red Team
+Ce projet documente des techniques utilisées dans les **tests d’intrusion modernes**, les **attaques Active Directory**, et les **opérations Red Team**.
 
 ---
 
-## 🚀 Sections principales
+## 🚀 Sections
+
+<div class="grid">
+
+<div class="card">
 
 ### 🔎 Reconnaissance
+- OSINT  
+- DNS Enumeration  
+- Subdomain Discovery  
+- Metadata Analysis  
 
-Collecte d’informations sur la cible.
+</div>
 
-* OSINT
-* DNS enumeration
-* Subdomain discovery
-* Metadata analysis
+<div class="card">
 
 ### 📡 Scanning
+- Port Scanning  
+- Service Detection  
+- Vulnerability Scanning  
+- Network Mapping  
 
-Identification des services exposés.
+</div>
 
-* Port scanning
-* Service detection
-* Vulnerability scanning
+<div class="card">
 
 ### 🌐 Web Pentesting
+- XSS  
+- SQL Injection  
+- SSRF  
+- LFI / RFI  
 
-Tests de sécurité des applications web.
+</div>
 
-* XSS
-* SQL Injection
-* File upload
-* SSRF
-* LFI / RFI
+<div class="card">
 
 ### 🏢 Active Directory
+- Kerberoasting  
+- Pass the Hash  
+- DCSync  
+- Golden Ticket  
 
-Attaques dans les environnements Windows.
+</div>
 
-* Kerberoasting
-* Pass the Hash
-* DCSync
-* Golden Ticket
+<div class="card">
 
 ### ⚡ Privilege Escalation
+**Linux**
+- SUID  
+- Cron Jobs  
+- Capabilities  
 
-Escalade de privilèges sur les systèmes.
+**Windows**
+- Token Impersonation  
+- DLL Hijacking  
 
-* Linux privesc
-* Windows privesc
-* SUID exploitation
-* Token impersonation
+</div>
+
+<div class="card">
+
+### 🔁 Pivoting
+- SSH Pivoting  
+- ProxyChains  
+- SOCKS Tunneling  
+- Port Forwarding  
+
+</div>
+
+</div>
 
 ---
 
 ## 🧰 Tools
 
-Quelques outils essentiels :
-
-* Nmap
-* Burp Suite
-* Metasploit
-* BloodHound
-* Impacket
-
----
-
-## 📚 Cheatsheets
-
-Commandes rapides pour :
-
-* Linux
-* Windows
-* Nmap
-* Active Directory
-* Web
+| Tool | Description |
+|------|-------------|
+| [Nmap](https://nmap.org/) | Network scanning |
+| [Burp Suite](https://portswigger.net/burp) | Web pentesting |
+| [Metasploit](https://www.metasploit.com/) | Exploitation framework |
+| [BloodHound](https://github.com/BloodHoundAD/BloodHound) | Active Directory attack paths |
+| [Impacket](https://github.com/SecureAuthCorp/impacket) | Network protocol exploitation |
+| [Gobuster](https://github.com/OJ/gobuster) | Directory brute force |
 
 ---
 
-⚠️ **Disclaimer**
+## 👨‍💻 Contributors
 
-Ce projet est uniquement destiné à l'apprentissage et au **hacking éthique** dans des environnements autorisés.
+<div class="contributors">
+
+<a href="https://github.com/hackthus">
+<img src="https://github.com/hackthus.png">
+</a>
+
+<a href="https://github.com/USERNAME2">
+<img src="https://github.com/USERNAME2.png">
+</a>
+
+<a href="https://github.com/USERNAME3">
+<img src="https://github.com/USERNAME3.png">
+</a>
+
+</div>
 
 ---
 
-🟢 *The Hackers 237 — Documenting the art of Pentesting.*
+## ⚠️ Disclaimer
+
+Ce projet est destiné uniquement à **l'apprentissage**, à la **recherche en cybersécurité** et au **hacking éthique** dans des environnements **autorisés**.
+
+---
+
+<div class="footer">
+
+🟢 **The Hackers 237 — Documenting the Art of Pentesting**
+
+</div>

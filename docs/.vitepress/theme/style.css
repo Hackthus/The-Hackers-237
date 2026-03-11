@@ -1,0 +1,53 @@
+.hero-banner {
+  background: black;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.banner {
+  width: 100%;
+  border: 20;
+  
+}
+
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  gap: 20px;
+}
+
+.card {
+  padding: 20px;
+  border-radius: 12px;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+}
+
+.card:hover {
+  transform: translateY(-3px);
+  transition: 0.2s;
+}
+
+.contributors {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.contributors img {
+  width: 45px;
+  border-radius: 50%;
+  transition: 0.2s;
+}
+
+.contributors img:hover {
+  transform: scale(1.1);
+}
+
+.footer {
+  text-align: center;
+  margin-top: 40px;
+  opacity: 0.8;
+}
