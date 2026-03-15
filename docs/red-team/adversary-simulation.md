@@ -1,1 +1,0 @@
-# Adversary simulation
