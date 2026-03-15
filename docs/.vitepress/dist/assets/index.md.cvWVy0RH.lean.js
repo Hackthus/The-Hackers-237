@@ -1,0 +1,1 @@
+import{_ as e,o as t,c as a,ak as s,al as n}from"./chunks/framework.agPo6524.js";const g=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"index.md","filePath":"index.md"}'),r={name:"index.md"};function l(o,i,c,d,h,p){return t(),a("div",null,[...i[0]||(i[0]=[s("",21)])])}const v=e(r,[["render",l]]);export{g as __pageData,v as default};

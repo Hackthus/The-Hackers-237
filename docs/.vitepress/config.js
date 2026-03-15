@@ -11,7 +11,7 @@ export default {
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/Hackthus/The-Hackers-237' }
+    { icon: 'github', link: 'https://github.com/Hackthus/The-Hackers-237' }
     ],
 
     nav: [
@@ -19,10 +19,8 @@ export default {
       { text: "Fundamentals", link: "/fundamentals/linux-basics" },
       { text: "Active Directory", link: "/active-directory/ad-recon" },
       { text: "Web", link: "/web/web-recon" },
-      { text: "Tools", link: "/tools/c2-frameworks" },
       { text: "Cheatsheets", link: "/cheatsheets/linux-cheatsheet" },
-      { text: "Articles", link: "/writeups/tryhackme" },
-      { text: "Writeups", link: "/writeups/tryhackme" }
+      { text: "Articles", link: "/writeups/tryhackme" } 
     ],
 
     outline: "deep",
@@ -34,7 +32,16 @@ export default {
 
     sidebar: [
 
-      // Fundamentals / Methodologies
+      // Methodologies
+      {
+        text: "Pentesting Methodology",
+        collapsed: true,
+        items: [
+          { text: "AD Methodology", link: "/tools/web-tools" },
+          { text: "Web Methodology", link: "/web/web-methodology" },
+        ]
+      },
+      // Fundamentals 
       {
         text: "Fundamentals",
         collapsed: false,
@@ -72,22 +79,11 @@ export default {
             ]
           },
 
-        ]
-      },
-
-      // Active Directory
-      {
-        text: "Active Directory",
-        collapsed: true,
-        items: [
-          { text:"Active Directory Methodology", link: "/fundamentals/pentest-methodology" },
-          { text: "Reconnaissance", link: "/active-directory/ad-recon" },
-           // Enumeration
           {
-            text: "Enumeration",
-            collapsed: true,
+          text: "Enumeration",
+          collapsed: true,
             items: [
-              { text: "SMB", link: "/enumeration/active-directory/smb" },
+              { text: "SMB", link: "/enumeration/smb" },
               { text: "LDAP", link: "/enumeration/ldap" },
               { text: "RPC", link: "/enumeration/rpc" },
               { text: "FTP", link: "/enumeration/ftp" },
@@ -100,8 +96,109 @@ export default {
               { text: "NFS", link: "/enumeration/nfs" }
             ]
           },
-          { text: "Exploitation", link: "/active-directory/ad-exploitation" },
-          { text: "Post Exploitation", link: "/active-directory/ad-post-exploitation" }
+
+        ]
+      },
+
+      // Active Directory
+      {
+        text: "Active Directory",
+        collapsed: true,
+        items: [
+
+          { text: "Introduction", link: "/active-directory/ad-intro" },
+
+          // Reconnaissance
+          {
+            text: "Reconnaissance",
+            collapsed: true,
+            items: [
+              { text: "Domain Discovery", link: "/active-directory/recon/domain-discovery" },
+              { text: "User Enumeration", link: "/active-directory/recon/user-enumeration" },
+              { text: "Service Discovery", link: "/active-directory/recon/service-discovery" }
+            ]
+          },
+
+          // Enumeration
+          {
+            text: "Enumeration",
+            collapsed: true,
+            items: [
+              { text: "SMB Enumeration", link: "/active-directory/enumeration/smb" },
+              { text: "LDAP Enumeration", link: "/active-directory/enumeration/ldap" },
+              { text: "Kerberos Enumeration", link: "/active-directory/enumeration/kerberos" },
+              { text: "RPC Enumeration", link: "/active-directory/enumeration/rpc" },
+              { text: "BloodHound Mapping", link: "/active-directory/enumeration/bloodhound" }
+            ]
+          },
+
+          // Credential Attacks
+          {
+            text: "Credential Attacks",
+            collapsed: true,
+            items: [
+              { text: "ASREPRoasting", link: "/active-directory/attacks/asreproasting" },
+              { text: "Kerberoasting", link: "/active-directory/attacks/kerberoasting" },
+              { text: "Password Spraying", link: "/active-directory/attacks/password-spraying" }
+            ]
+          },
+
+          // Privilege Escalation
+          {
+            text: "Privilege Escalation",
+            collapsed: true,
+            items: [
+              { text: "ACL Abuse", link: "/active-directory/privesc/acl-abuse" },
+              { text: "DCSync", link: "/active-directory/privesc/dcsync" },
+              { text: "DCShadow", link: "/active-directory/privesc/dcshadow" }
+            ]
+          },
+
+          // Lateral Movement
+          {
+            text: "Lateral Movement",
+            collapsed: true,
+            items: [
+              { text: "Pass-the-Hash", link: "/active-directory/lateral-movement/pass-the-hash" },
+              { text: "Pass-the-Ticket", link: "/active-directory/lateral-movement/pass-the-ticket" },
+              { text: "WinRM", link: "/active-directory/lateral-movement/winrm" },
+              { text: "PsExec", link: "/active-directory/lateral-movement/psexec" }
+            ]
+          },
+
+          // Post-Exploitation
+          {
+            text: "Post Exploitation",
+            collapsed: true,
+            items: [
+              { text: "Credential Dumping", link: "/post-exploitation/credential-dumping" },
+              { text: "Mimikatz", link: "/post-exploitation/mimikatz" },
+              { text: "Secretsdump", link: "/post-exploitation/secretsdump" },
+              { text: "Pivoting", link: "/post-exploitation/pivoting" },
+              { text: "Data Exfiltration", link: "/post-exploitation/data-exfiltration" }
+            ]
+          },
+
+          // Persistence
+          {
+            text: "Persistence",
+            collapsed: true,
+            items: [
+              { text: "Golden Ticket", link: "/active-directory/persistence/golden-ticket" },
+              { text: "Silver Ticket", link: "/active-directory/persistence/silver-ticket" },
+              { text: "SID History", link: "/active-directory/persistence/sid-history" }
+            ]
+          },
+
+          // Defense
+          {
+            text: "Detection & Defense",
+            collapsed: true,
+            items: [
+              { text: "Detection", link: "/active-directory/defense/detection" },
+              { text: "Mitigation", link: "/active-directory/defense/mitigation" }
+            ]
+          }
         ]
       },
 
@@ -110,39 +207,75 @@ export default {
         text: "Web",
         collapsed: true,
         items: [
-          { text: "Web Methodology", link: "/fundamentals/pentest-methodology" },
-          { text: "Reconnaissance", link: "/web/web-recon" },
-          { text: "Enumeration", link: "/web/web-enumeration" },
-          { text: "Exploitation", link: "/web/web-exploitation" },
-          { text: "Post Exploitation", link: "/web/web-post-exploitation" },
-          {
-            text: "OWASP Top 10",
-            collapsed: true,
-            items: [
-              { text: "Introduction", link: "/web/owasp-top-10" },
-              { text: "A01 - Broken Access Control", link: "/web/owasp/a01-broken-access-control" },
-              { text: "A02 - Cryptographic Failures", link: "/web/owasp/a02-cryptographic-failures" },
-              { text: "A03 - Injection", link: "/web/owasp/a03-injection" },
-              { text: "A04 - Insecure Design", link: "/web/owasp/a04-insecure-design" },
-              { text: "A05 - Security Misconfiguration", link: "/web/owasp/a05-security-misconfiguration" },
-              { text: "A06 - Vulnerable Components", link: "/web/owasp/a06-vulnerable-components" },
-              { text: "A07 - Identification and Authentication Failures", link: "/web/owasp/a07-authentication-failures" },
-              { text: "A08 - Software and Data Integrity Failures", link: "/web/owasp/a08-integrity-failures" },
-              { text: "A09 - Security Logging and Monitoring Failures", link: "/web/owasp/a09-logging-monitoring" },
-              { text: "A10 - Server-Side Request Forgery (SSRF)", link: "/web/owasp/a10-ssrf" }
-            ]
-          }
+
+        {
+        text: "Vulnerabilities",
+        collapsed: true,
+        items: [
+        { text: "SQL Injection", link: "/web/sqli" },
+        { text: "XSS", link: "/web/xss" },
+        { text: "File Upload", link: "/web/file-upload" },
+        { text: "LFI", link: "/web/lfi" },
+        { text: "RFI", link: "/web/rfi" },
+        { text: "SSRF", link: "/web/ssrf" },
+        { text: "Command Injection", link: "/web/command-injection" }
         ]
-      },
+        },
+
+        {
+        text: "OWASP Top 10",
+        collapsed: true,
+        items: [
+        { text: "A01 Broken Access Control", link: "/web/owasp/a01-broken-access-control" },
+        { text: "A02 Cryptographic Failures", link: "/web/owasp/a02-cryptographic-failures" },
+        { text: "A03 Injection", link: "/web/owasp/a03-injection" },
+        { text: "A04 Insecure Design", link: "/web/owasp/a04-insecure-design" },
+        { text: "A05 Security Misconfiguration", link: "/web/owasp/a05-security-misconfiguration" },
+        { text: "A06 Vulnerable Components", link: "/web/owasp/a06-vulnerable-components" },
+        { text: "A07 Authentication Failures", link: "/web/owasp/a07-authentication-failures" },
+        { text: "A08 Integrity Failures", link: "/web/owasp/a08-integrity-failures" },
+        { text: "A09 Logging Failures", link: "/web/owasp/a09-logging-monitoring" },
+        { text: "A10 SSRF", link: "/web/owasp/a10-ssrf" }
+        ]
+        }
+
+        ]
+        },
+
 
       // Tools
       {
         text: "Tools",
         collapsed: true,
         items: [
-          { text: "C2 Frameworks", link: "/tools/c2-frameworks" },
-          { text: "Active Directory Tools", link: "/tools/ad-tools" },
-          { text: "Web Application Tools", link: "/tools/web-tools" }
+          {
+            text: "C2 Frameworks",
+            collapsed: true,
+            items: [
+            { text: "Metasploit", link: "/tools/metasploit" },
+            { text: "Sliver", link: "/tools/impacket" }
+            ]
+          },
+          {
+            text: "Active Directory",
+            collapsed: true,
+            items: [
+            { text: "Nmap", link: "/tools/nmap" },
+            { text: "NetExec", link: "/tools/burpsuite" },
+            { text: "Impacket", link: "/tools/impacket" },
+            { text: "BloodHound", link: "/tools/bloodhound" },
+            { text: "Responder", link: "/tools/responder" }
+            ]
+          },
+
+          {
+            text: "Web Application",
+            collapsed: true,
+            items: [
+              { text: "Nmap", link: "/tools/nmap" },
+              { text: "SqlMap", link: "/tools/sqlmap" },
+              ]
+            },
         ]
       },
 
@@ -154,16 +287,6 @@ export default {
           { text: "Linux Cheatsheet", link: "/cheatsheets/linux-cheatsheet" },
           { text: "Windows Cheatsheet", link: "/cheatsheets/windows-cheatsheet" },
           { text: "MacOS Cheatsheet", link: "/cheatsheets/macos-cheatsheet" }
-        ]
-      },
-
-      // Writeups
-      {
-        text: "Writeups",
-        collapsed: true,
-        items: [
-          { text: "TryHackMe", link: "/writeups/tryhackme" },
-          { text: "HackTheBox", link: "/writeups/hackthebox" }
         ]
       },
 
@@ -181,8 +304,7 @@ export default {
       },
 
       { text: "Contribution", link: "/writeups/tryhackme" }
-        
-      
+         
 
     ]
   }
