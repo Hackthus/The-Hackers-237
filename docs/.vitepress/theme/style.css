@@ -1,0 +1,818 @@
+/* ============================================================
+   The H@ckers 237 — VitePress Custom Theme
+   .vitepress/theme/style.css
+   ============================================================ */
+
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Space+Grotesk:wght@300;400;500;600;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
+
+
+/* ------------------------------------------------------------
+   BRAND COLORS — Palette cybersécurité
+   ------------------------------------------------------------ */
+:root {
+  --vp-c-brand-1: #00e676;
+  --vp-c-brand-2: #00c853;
+  --vp-c-brand-3: #00a040;
+  --vp-c-brand-soft: rgba(0, 230, 118, 0.1);
+
+  --hackers-glow: 0 0 12px rgba(0, 230, 118, 0.3);
+  --hackers-glow-strong: 0 0 20px rgba(0, 230, 118, 0.5);
+  --hackers-card-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --hackers-radius: 12px;
+  --hackers-transition: 0.25s ease;
+}
+
+.dark {
+  --vp-c-bg: #0d0d0d;
+  --vp-c-bg-soft: #141414;
+  --vp-c-bg-alt: #1a1a1a;
+  --vp-c-bg-elv: #1f1f1f;
+  --vp-c-divider: #2a2a2a;
+  --vp-c-text-1: #e8e8e8;
+  --vp-c-text-2: #a0a0a0;
+  --vp-c-text-3: #666666;
+  --vp-code-bg: #111111;
+}
+
+/* ------------------------------------------------------------
+   HERO BANNER — Zoom au scroll
+   ------------------------------------------------------------ */
+.banner {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border: none;
+  display: block;
+  margin: 0 auto;
+  transition: transform 0.4s ease, filter 0.4s ease;
+  transform-origin: center center;
+  will-change: transform;
+  cursor: pointer;
+}
+
+.banner:hover {
+  transform: scale(1.06);
+  filter: brightness(1.05);
+}
+
+/* ------------------------------------------------------------
+   GRID LAYOUT
+   ------------------------------------------------------------ */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.2rem;
+  margin: 2rem 0;
+}
+
+/* ------------------------------------------------------------
+   CARDS
+   ------------------------------------------------------------ */
+.card {
+  position: relative;
+  padding: 1.5rem;
+  border-radius: var(--hackers-radius);
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  transition:
+    transform var(--hackers-transition),
+    box-shadow var(--hackers-transition),
+    border-color var(--hackers-transition);
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--vp-c-brand-1), transparent);
+  opacity: 0;
+  transition: opacity var(--hackers-transition);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--hackers-card-shadow);
+  border-color: var(--vp-c-brand-1);
+}
+
+.card:hover::before {
+  opacity: 1;
+}
+
+.card h3 {
+  margin-top: 0;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.card a {
+  color: var(--vp-c-brand-1);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: color var(--hackers-transition);
+}
+
+.card a:hover {
+  color: var(--vp-c-brand-2);
+  text-decoration: underline;
+}
+
+/* ------------------------------------------------------------
+   BADGES — Difficulté / Bruit / MITRE
+   ------------------------------------------------------------ */
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin: 1rem 0 2rem;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  color: var(--vp-c-text-2);
+  letter-spacing: 0.03em;
+}
+
+.badge.low    { border-color: #00e676; color: #00e676; }
+.badge.medium { border-color: #ffa726; color: #ffa726; }
+.badge.high   { border-color: #ef5350; color: #ef5350; }
+.badge.mitre  { border-color: #7c4dff; color: #7c4dff; }
+
+/* ------------------------------------------------------------
+   STATS — Page index
+   ------------------------------------------------------------ */
+.stats {
+  display: flex;
+  justify-content: center;
+  gap: 3rem;
+  margin: 2.5rem 0;
+  text-align: center;
+  flex-wrap: wrap;
+}
+
+.stat-number {
+  display: block;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--vp-c-brand-1);
+  line-height: 1;
+  text-shadow: var(--hackers-glow);
+}
+
+.stat-label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--vp-c-text-2);
+  margin-top: 0.4rem;
+}
+
+/* ------------------------------------------------------------
+   CONTRIBUTORS
+   ------------------------------------------------------------ */
+.contributors {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 1.5rem 0;
+}
+
+.contributors a {
+  display: inline-block;
+  line-height: 0;
+}
+
+.contributors img {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 2px solid var(--vp-c-divider);
+  transition:
+    transform var(--hackers-transition),
+    box-shadow var(--hackers-transition),
+    border-color var(--hackers-transition);
+}
+
+.contributors img:hover {
+  transform: scale(1.15);
+  border-color: var(--vp-c-brand-1);
+  box-shadow: var(--hackers-glow-strong);
+}
+
+/* ------------------------------------------------------------
+   CODE BLOCKS
+   ------------------------------------------------------------ */
+.dark .vp-doc div[class*='language-'] {
+  background: #0a0a0a;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: var(--hackers-radius);
+}
+
+.dark .vp-doc div[class*='language-']::before {
+  color: var(--vp-c-text-3);
+}
+
+/* Barre de titre du bloc de code */
+.dark .vp-doc div[class*='language-'] .lang {
+  color: var(--vp-c-brand-1);
+  opacity: 0.7;
+  font-size: 0.75rem;
+}
+
+/* ------------------------------------------------------------
+   PAGE FOOTER
+   ------------------------------------------------------------ */
+.page-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 4rem;
+  padding: 1.2rem 0 0;
+  border-top: 1px solid var(--vp-c-divider);
+  font-size: 0.82rem;
+  color: var(--vp-c-text-3);
+}
+
+.page-footer img {
+  vertical-align: middle;
+}
+
+/* ------------------------------------------------------------
+   FOOTER
+   ------------------------------------------------------------ */
+.footer {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--vp-c-divider);
+  opacity: 0.7;
+  font-size: 0.85rem;
+}
+
+/* ------------------------------------------------------------
+   ROADMAP TABLE
+   ------------------------------------------------------------ */
+.vp-doc table td:first-child {
+  text-align: center;
+  font-size: 1rem;
+}
+
+/* ------------------------------------------------------------
+   CUSTOM SCROLLBAR — Dark mode
+   ------------------------------------------------------------ */
+.dark ::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.dark ::-webkit-scrollbar-track {
+  background: var(--vp-c-bg);
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: var(--vp-c-divider);
+  border-radius: 999px;
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: var(--vp-c-brand-1);
+}
+
+/* ------------------------------------------------------------
+   SELECTION
+   ------------------------------------------------------------ */
+::selection {
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+}
+
+/* ------------------------------------------------------------
+   RESPONSIVE — Mobile
+   ------------------------------------------------------------ */
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .page-footer {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .stats {
+    gap: 2rem;
+  }
+
+  .stat-number {
+    font-size: 2rem;
+  }
+}
+
+
+
+/* ============================================================
+   TYPOGRAPHY — Hacker / Dev Style
+   ============================================================ */
+
+
+:root {
+  /* Polices */
+  --hackers-font-body: 'Space Grotesk', sans-serif;
+  --hackers-font-mono: 'JetBrains Mono', monospace;
+  --hackers-font-title: 'Space Mono', monospace;
+
+  /* Tailles */
+  --hackers-font-size-base: 15px;
+  --hackers-font-size-sm: 0.875rem;
+  --hackers-font-size-xs: 0.78rem;
+
+  /* Line height */
+  --hackers-line-height: 1.75;
+}
+
+/* ------------------------------------------------------------
+   BASE
+   ------------------------------------------------------------ */
+:root {
+  --vp-font-family-base: var(--hackers-font-body);
+  --vp-font-family-mono: var(--hackers-font-mono);
+}
+
+body {
+  font-family: var(--hackers-font-body);
+  font-size: var(--hackers-font-size-base);
+  line-height: var(--hackers-line-height);
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ------------------------------------------------------------
+   TITRES — Style terminal / hacker
+   ------------------------------------------------------------ */
+.vp-doc h1,
+.vp-doc h2,
+.vp-doc h3,
+.vp-doc h4 {
+  font-family: var(--hackers-font-title);
+  letter-spacing: -0.02em;
+  font-weight: 700;
+}
+
+.vp-doc h1 {
+  font-size: 1.9rem;
+  line-height: 1.2;
+  color: var(--vp-c-brand-1);
+  text-shadow: var(--hackers-glow);
+  margin-bottom: 1.5rem;
+}
+
+.vp-doc h2 {
+  font-size: 1.35rem;
+  border-top: 1px solid var(--vp-c-divider);
+  padding-top: 1.2rem;
+  margin-top: 2.5rem;
+  color: var(--vp-c-text-1);
+}
+
+/* Prefixe > sur les h2 style terminal */
+.vp-doc h2::before {
+  content: '> ';
+  color: var(--vp-c-brand-1);
+  opacity: 0.7;
+  font-family: var(--hackers-font-mono);
+  font-weight: 400;
+}
+
+.vp-doc h3 {
+  font-size: 1.05rem;
+  color: var(--vp-c-text-1);
+}
+
+/* Prefixe # sur les h3 style code */
+.vp-doc h3::before {
+  content: '# ';
+  color: var(--vp-c-brand-1);
+  opacity: 0.5;
+  font-family: var(--hackers-font-mono);
+  font-weight: 400;
+}
+
+/* ------------------------------------------------------------
+   PARAGRAPHES
+   ------------------------------------------------------------ */
+.vp-doc p {
+  font-family: var(--hackers-font-body);
+  font-size: var(--hackers-font-size-base);
+  line-height: var(--hackers-line-height);
+  color: var(--vp-c-text-1);
+}
+
+/* ------------------------------------------------------------
+   CODE INLINE
+   ------------------------------------------------------------ */
+.vp-doc code {
+  font-family: var(--hackers-font-mono);
+  font-size: 0.85em;
+  font-weight: 500;
+  padding: 0.15em 0.45em;
+  border-radius: 4px;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  color: var(--vp-c-brand-1);
+}
+
+/* ------------------------------------------------------------
+   BLOCS DE CODE
+   ------------------------------------------------------------ */
+.vp-doc div[class*='language-'] code {
+  font-family: var(--hackers-font-mono);
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+  color: inherit;
+  background: transparent;
+  border: none;
+  padding: 0;
+}
+
+/* ------------------------------------------------------------
+   LIENS
+   ------------------------------------------------------------ */
+.vp-doc a {
+  font-family: var(--hackers-font-body);
+  font-weight: 500;
+  color: var(--vp-c-brand-1);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.vp-doc a:hover {
+  color: var(--vp-c-brand-2);
+  border-bottom-color: var(--vp-c-brand-2);
+}
+
+/* ------------------------------------------------------------
+   LISTES
+   ------------------------------------------------------------ */
+.vp-doc ul,
+.vp-doc ol {
+  font-family: var(--hackers-font-body);
+  line-height: 1.9;
+  padding-left: 1.4rem;
+}
+
+.vp-doc li {
+  margin: 0.2rem 0;
+}
+
+/* Puce personnalisée style terminal */
+.vp-doc ul > li::marker {
+  content: '▸ ';
+  color: var(--vp-c-brand-1);
+}
+
+/* ------------------------------------------------------------
+   TABLEAUX
+   ------------------------------------------------------------ */
+.vp-doc table {
+  font-family: var(--hackers-font-mono);
+  font-size: 0.875rem;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.vp-doc thead tr {
+  background: var(--vp-c-bg-soft);
+  border-bottom: 2px solid var(--vp-c-brand-1);
+}
+
+.vp-doc th {
+  font-weight: 600;
+  color: var(--vp-c-brand-1);
+  padding: 0.6rem 1rem;
+  text-align: left;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+}
+
+.vp-doc td {
+  padding: 0.6rem 1rem;
+  border-bottom: 1px solid var(--vp-c-divider);
+  color: var(--vp-c-text-1);
+}
+
+.vp-doc tr:hover td {
+  background: var(--vp-c-bg-soft);
+}
+
+/* ------------------------------------------------------------
+   BLOCKQUOTE
+   ------------------------------------------------------------ */
+.vp-doc blockquote {
+  font-family: var(--hackers-font-mono);
+  font-size: 0.9rem;
+  border-left: 3px solid var(--vp-c-brand-1);
+  background: var(--vp-c-bg-soft);
+  padding: 0.8rem 1.2rem;
+  border-radius: 0 var(--hackers-radius) var(--hackers-radius) 0;
+  color: var(--vp-c-text-2);
+  margin: 1.5rem 0;
+}
+
+.vp-doc blockquote p {
+  margin: 0;
+  font-family: var(--hackers-font-mono);
+}
+
+/* ------------------------------------------------------------
+   NAVBAR & SIDEBAR
+   ------------------------------------------------------------ */
+.VPNav .title,
+.VPNavBarTitle .title {
+  font-family: var(--hackers-font-title);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--vp-c-brand-1) !important;
+}
+
+.VPSidebarItem .text {
+  font-family: var(--hackers-font-body);
+  font-size: 0.9rem;
+}
+
+.VPSidebarItem.is-active > .item > .indicator {
+  background: var(--vp-c-brand-1);
+}
+
+/* ------------------------------------------------------------
+   STRONG / EM
+   ------------------------------------------------------------ */
+.vp-doc strong {
+  font-weight: 700;
+  color: var(--vp-c-text-1);
+}
+
+.vp-doc em {
+  font-family: var(--hackers-font-mono);
+  font-style: normal;
+  color: var(--vp-c-brand-1);
+  opacity: 0.85;
+}
+
+/* ------------------------------------------------------------
+   RESPONSIVE
+   ------------------------------------------------------------ */
+@media (max-width: 640px) {
+  .vp-doc h1 { font-size: 1.5rem; }
+  .vp-doc h2 { font-size: 1.15rem; }
+  .vp-doc h3 { font-size: 1rem; }
+
+  .vp-doc div[class*='language-'] code {
+    font-size: 0.8rem;
+  }
+}
+
+
+/* ============================================================
+   AMELIORATIONS 1-4
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   1. GLASSMORPHISM — Cards
+   ------------------------------------------------------------ */
+.dark .card {
+  background: rgba(20, 20, 20, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(0, 230, 118, 0.08);
+}
+
+.dark .card:hover {
+  background: rgba(20, 20, 20, 0.85);
+  border-color: rgba(0, 230, 118, 0.35);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(0, 230, 118, 0.08),
+    inset 0 1px 0 rgba(0, 230, 118, 0.08);
+}
+
+
+/* ------------------------------------------------------------
+   2. BLOCS CUSTOM — Style terminal
+   ------------------------------------------------------------ */
+.dark .vp-doc .custom-block {
+  border-radius: var(--hackers-radius);
+  border-left-width: 3px;
+}
+
+.dark .vp-doc .custom-block.info {
+  background: rgba(0, 230, 118, 0.04);
+  border: 1px solid rgba(0, 230, 118, 0.15);
+  border-left: 3px solid var(--vp-c-brand-1);
+}
+
+.dark .vp-doc .custom-block.tip {
+  background: rgba(0, 230, 118, 0.04);
+  border: 1px solid rgba(0, 230, 118, 0.15);
+  border-left: 3px solid var(--vp-c-brand-1);
+}
+
+.dark .vp-doc .custom-block.warning {
+  background: rgba(255, 167, 38, 0.04);
+  border: 1px solid rgba(255, 167, 38, 0.15);
+  border-left: 3px solid #ffa726;
+}
+
+.dark .vp-doc .custom-block.danger {
+  background: rgba(239, 83, 80, 0.04);
+  border: 1px solid rgba(239, 83, 80, 0.15);
+  border-left: 3px solid #ef5350;
+}
+
+.dark .vp-doc .custom-block.details {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--vp-c-divider);
+  border-left: 3px solid var(--vp-c-text-3);
+}
+
+.dark .vp-doc .custom-block-title {
+  font-family: var(--hackers-font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ------------------------------------------------------------
+   3. PROMPT $ — Blocs bash
+   ------------------------------------------------------------ */
+.vp-doc div[class*='language-bash'] .line::before,
+.vp-doc div[class*='language-sh'] .line::before {
+  content: ' $ ';
+  color: var(--vp-c-brand-1);
+  opacity: 0.45;
+  user-select: none;
+  font-weight: 400;
+}
+
+/* Pas de prompt sur les lignes vides */
+.vp-doc div[class*='language-bash'] .line:empty::before,
+.vp-doc div[class*='language-sh'] .line:empty::before {
+  content: none;
+}
+
+/* Pas de prompt sur les commentaires */
+.vp-doc div[class*='language-bash'] .line .token.comment::before {
+  content: none;
+}
+
+/* ------------------------------------------------------------
+   4. GLOW ANIME — Titres h1
+   ------------------------------------------------------------ */
+@keyframes glow-pulse {
+  0%, 100% {
+    text-shadow:
+      0 0 8px rgba(0, 230, 118, 0.3),
+      0 0 16px rgba(0, 230, 118, 0.1);
+  }
+  50% {
+    text-shadow:
+      0 0 16px rgba(0, 230, 118, 0.6),
+      0 0 32px rgba(0, 230, 118, 0.3),
+      0 0 48px rgba(0, 230, 118, 0.1);
+  }
+}
+
+.dark .vp-doc h1 {
+  animation: glow-pulse 4s ease-in-out infinite;
+}
+
+/* Glow statique sur h2 au hover */
+.dark .vp-doc h2:hover {
+  color: var(--vp-c-brand-1);
+  text-shadow: 0 0 12px rgba(0, 230, 118, 0.3);
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+  cursor: default;
+}
+
+/* Glow sur h3 au hover */
+.dark .vp-doc h3:hover {
+  color: var(--vp-c-brand-1);
+  transition: color 0.3s ease;
+  cursor: default;
+}
+
+
+/* ============================================================
+   AMELIORATIONS 5-7
+   ============================================================ */
+
+/* ------------------------------------------------------------
+   5. BARRE DE PROGRESSION DE LECTURE
+   ------------------------------------------------------------ */
+.reading-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background: linear-gradient(
+    90deg,
+    var(--vp-c-brand-1),
+    var(--vp-c-brand-2),
+    var(--vp-c-brand-1)
+  );
+  background-size: 200% 100%;
+  box-shadow:
+    0 0 8px rgba(0, 230, 118, 0.6),
+    0 0 16px rgba(0, 230, 118, 0.3);
+  z-index: 9999;
+  transition: width 0.1s ease;
+  animation: shimmer 2s linear infinite;
+}
+
+@keyframes shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* ------------------------------------------------------------
+   6. TYPEWRITER — Slogan page index
+   ------------------------------------------------------------ */
+.hero-tagline {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid var(--vp-c-brand-1);
+  width: 0;
+  font-family: var(--hackers-font-mono);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--vp-c-brand-1);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(0, 230, 118, 0.4);
+  animation:
+    typing 3.5s steps(45) 0.5s forwards,
+    blink 0.75s step-end infinite;
+}
+
+@keyframes typing {
+  from { width: 0; }
+  to   { width: 100%; }
+}
+
+@keyframes blink {
+  0%, 100% { border-color: var(--vp-c-brand-1); }
+  50%      { border-color: transparent; }
+}
+
+/* Variante — délai pour un deuxième slogan 
+.hero-tagline-2 {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 2px solid var(--vp-c-text-2);
+  width: 0;
+  font-family: var(--hackers-font-mono);
+  font-size: 0.85rem;
+  color: var(--vp-c-text-2);
+  letter-spacing: 0.04em;
+  animation:
+    typing 2s steps(25) 3.5s forwards,
+    blink-gray 0.75s step-end 3.5s infinite;
+}
+
+@keyframes blink-gray {
+  0%, 100% { border-color: var(--vp-c-text-2); }
+  50%      { border-color: transparent; }
+}
+
+*/
+
+/* Taille Logo*/
+.VPNavBarTitle .logo {
+  height: 60px;
+  width: 45px;
+  margin-right: 10px;
+}
