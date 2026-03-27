@@ -301,7 +301,7 @@ export default {
           { text: "Nmap Cheatsheet", link: "/cheatsheets/nmap-cheatsheet" },
           { text: "AD Cheatsheet", link: "/cheatsheets/ad-cheatsheet" },
           { text: "Web Cheatsheet", link: "/cheatsheets/web-cheatsheet" },
-          { text: "Files Transfert", link: "/cheatsheets/files-transfert" },
+          { text: "Files Transfert", link: "/cheatsheets/files-transfer-cheatsheet" },
         ]
       }
 
