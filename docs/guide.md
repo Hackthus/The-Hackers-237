@@ -16,13 +16,12 @@ Ce guide explique comment ajouter du contenu de manière cohérente avec le rest
 
 ## Workflow de Contribution
 ````
-1. Forker le dépôt
-2. Cloner votre fork en local
-3. Créer une branche dédiée
-4. Rédiger votre contenu en suivant le template
-5. Tester le rendu en local (VitePress)
-6. Commit et push
-7. Ouvrir une Pull Request
+ 1. Forker le dépôt
+ 2. Cloner votre fork en local
+ 3. Rédiger votre contenu en suivant le template
+ 4. Tester le rendu en local (VitePress)
+ 5. Commit et push
+ 6. Ouvrir une Pull Request
 ````
 
 
@@ -131,30 +130,30 @@ Un template est disponible pour créer de nouvelles pages pour les attacks activ
 
 ## Blocs VitePress Disponibles
 ````markdown
-::: info
-Information générale ou tip.
-:::
+ ::: info
+ Information générale ou tip.
+ :::
 
-::: warning
-Mise en garde  action à risque.
-:::
+ ::: warning
+ Mise en garde  action à risque.
+ :::
 
-::: danger
-Action irréversible ou critique.
-:::
+ ::: danger
+ Action irréversible ou critique.
+ :::
 
-::: details Titre du bloc
-Contenu masqué par défaut (checklist, notes, etc.).
-:::
+ ::: details Titre du bloc
+ Contenu masqué par défaut (checklist, notes, etc.).
+ :::
 
-::: code-group
-```bash [Onglet 1]
-commande 1
-```
-```bash [Onglet 2]
-commande 2
-```
-:::
+ ::: code-group
+ ```bash [Onglet 1]
+ commande 1
+ ```
+ ```bash [Onglet 2]
+ commande 2
+ ```
+ :::
 ````
 
 
@@ -163,28 +162,28 @@ commande 2
 
 ### Titre de la PR
 ````
-[ADD] Enumération SSH
-[ADD] Attaque AD — DCSync
-[FIX] Correction commande Kerberoasting
-[UPDATE] Mise à jour section FTP
+ [ADD] Enumération SSH
+ [ADD] Attaque AD DCSync
+ [FIX] Correction commande Kerberoasting
+ [UPDATE] Mise à jour section FTP
 ````
 
 ### Description de la PR
 ````markdown
-## Description
-Courte description de ce qui a été ajouté ou modifié.
+ ## Description
+ Courte description de ce qui a été ajouté ou modifié.
 
-## Type de changement
-- [ ] Nouvelle page
-- [ ] Correction
-- [ ] Mise à jour
-- [ ] Amélioration
+ ## Type de changement
+ - Nouvelle page
+ - Correction
+ - Mise à jour
+ - Amélioration
 
-## Checklist
-- [ ] Le contenu suit le template
-- [ ] Les commandes ont été testées
-- [ ] Les sources sont citées
-- [ ] La page est ajoutée dans la sidebar (config.ts)
+ ## Checklist
+ - Le contenu suit le template
+ - Les commandes ont été testées
+ - Les sources sont citées
+ - La page est ajoutée dans la sidebar (config.ts)
 ````
 
 

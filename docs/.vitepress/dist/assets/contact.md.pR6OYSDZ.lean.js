@@ -1,0 +1,1 @@
+import{_ as a,o as t,c as i,ak as s}from"./chunks/framework.RPFtYYnm.js";const p=JSON.parse('{"title":"Contact","description":"","frontmatter":{},"headers":[],"relativePath":"contact.md","filePath":"contact.md"}'),n={name:"contact.md"};function r(l,e,o,c,u,h){return t(),i("div",null,[...e[0]||(e[0]=[s("",20)])])}const k=a(n,[["render",r]]);export{p as __pageData,k as default};

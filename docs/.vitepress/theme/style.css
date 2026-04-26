@@ -40,21 +40,26 @@
    HERO BANNER — Zoom au scroll
    ------------------------------------------------------------ */
 .banner {
-  width: 100%;
   max-width: 100%;
   height: auto;
   border: none;
+  border-radius: 35px;
   display: block;
   margin: 0 auto;
-  transition: transform 0.4s ease, filter 0.4s ease;
-  transform-origin: center center;
-  will-change: transform;
   cursor: pointer;
+  transform-origin: center center;
+  transition: transform 0.4s ease, filter 0.4s ease;
+  overflow: hidden; /* nécessaire pour que le border-radius soit respecté */
 }
 
 .banner:hover {
-  transform: scale(1.06);
+  will-change: transform;
+  transform: scale(1.03);
   filter: brightness(1.05);
+}
+
+.banner:not(:hover) {
+  will-change: auto;
 }
 
 /* ------------------------------------------------------------
@@ -816,3 +821,4 @@ body {
   width: 35px;
   margin-right: 10px;
 }
+

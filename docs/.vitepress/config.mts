@@ -1,9 +1,13 @@
 export default {
-  title: "The H@ckers 237",
+  title: "The Hackers 237",
   description: "Pentesting & Offensive Security Wiki",
   base: "/The-Hackers-237/",
   appearance: true,
   ignoreDeadLinks: true,
+
+  head: [
+    ['link', { rel: 'icon', type: 'image/png', href: './assets/logo.png' }]
+  ],
 
   themeConfig: {
 
@@ -18,11 +22,12 @@ export default {
 
     nav: [
       { text: "Home", link: "/" },
-      { text: "Fundamentals", link: "/fundamentals/pentest-methodology" },
-      { text: "Web", link: "/web/web-methodology" },
-      { text: "Active Directory", link: "/active-directory/ad-intro" },
+      { text: "Fundamentals", link: "/fundamentals/index-fundamentals" },
+      { text: "Active Directory", link: "/active-directory/index-active-directory" },
+      { text: "Web", link: "/web/index-web" },
       { text: "Cheatsheets", link: "/cheatsheets/linux-cheatsheet" },
-      { text: "Mindmap", link: "/evasion/obfuscation" }
+      { text: "Mindmap", link: "/evasion/obfuscation" },
+      { text: "Contact", link: "/contact" }
     ],
 
     outline: "deep",
@@ -38,12 +43,23 @@ export default {
         text: "Fundamentals",
         collapsed: false,
         items: [
-          { text: "Pentest Methodology", link: "/fundamentals/pentest-methodology" },
-          { text: "Kill Chain", link: "/fundamentals/kill-chain" },
-          { text: "Networking ", link: "/fundamentals/networking-basics" },
-          { text: "Linux ", link: "/fundamentals/linux-basics" },
-          { text: "Windows ", link: "/fundamentals/windows-basics" },
-          { text: "MacOS ", link: "/fundamentals/windows-basics" }
+          { text: "Pentest Methodology", link: "/fundamentals/pentest-methodology-fundamentals" },
+          { text: "Kill Chain", link: "/fundamentals/kill-chain-fundamentals" },
+          { text: "Networking ", link: "/fundamentals/networking-fundamentals" },
+          { text: "Linux ", link: "/fundamentals/linux-fundamentals" },
+          { text: "Windows ", link: "/fundamentals/windows-fundamentals" },
+          { text: "MacOS ", link: "/fundamentals/macos-fundamentals" }
+        ]
+      },
+
+      // Techniques Tactiques et Proceddures
+      {
+        text: "TTP",
+        collapsed: false,
+        items: [
+          { text: "DLL Execution", link: "/ttp/dll_execution" },
+          { text: "Filess Execution", link: "/ttp/filess_execution" },
+       
         ]
       },
 
@@ -74,11 +90,6 @@ export default {
               { text: "DNS Recon", link: "/recon/dns-recon" },
               { text: "Subdomain Enumeration", link: "/recon/subdomain-enumeration" },
               { text: "Nmap", link: "/scanning/nmap" },
-              { text: "Masscan", link: "/scanning/masscan" },
-              { text: "Rustscan", link: "/scanning/rustscan" },
-              { text: "Service Detection", link: "/scanning/service-detection" },
-              { text: "Banner Grabbing", link: "/scanning/banner-grabbing" },
-              { text: "Vulnerability Scanning", link: "/scanning/vuln-scanning" }
             ]
           }
         ]
@@ -86,20 +97,20 @@ export default {
 
       // Enumeration
       {
-        text: "Enumeration",
+        text: "Network Enumeration",
         collapsed: true,
         items: [
-          { text: "SMB", link: "/enumeration/smb" },
-          { text: "LDAP", link: "/enumeration/ldap" },
-          { text: "RPC", link: "/enumeration/rpc" },
-          { text: "FTP", link: "/enumeration/ftp" },
-          { text: "SSH", link: "/enumeration/ssh" },
-          { text: "RDP", link: "/enumeration/rdp" },
-          { text: "SNMP", link: "/enumeration/snmp" },
-          { text: "SMTP", link: "/enumeration/smtp" },
-          { text: "DNS", link: "/enumeration/dns" },
-          { text: "Kerberos", link: "/enumeration/kerberos" },
-          { text: "NFS", link: "/enumeration/nfs" }
+          { text: "SMB", link: "/network-enumeration/smb" },
+          { text: "LDAP", link: "/network-enumeration/ldap" },
+          { text: "RPC", link: "/network-enumeration/rpc" },
+          { text: "FTP", link: "/network-enumeration/ftp" },
+          { text: "SSH", link: "/network-enumeration/ssh" },
+          { text: "RDP", link: "/network-enumeration/rdp" },
+          { text: "SNMP", link: "/network-enumeration/snmp" },
+          { text: "SMTP", link: "/network-enumeration/smtp" },
+          { text: "DNS", link: "/network-enumeration/dns" },
+          { text: "Kerberos", link: "/network-enumeration/kerberos" },
+          { text: "NFS", link: "/network-enumeration/nfs" }
         ]
       },
 
@@ -109,7 +120,7 @@ export default {
         collapsed: true,
         items: [
 
-          { text: "Methodology", link: "/active-directory/ad-intro" },
+          { text: "Methodology", link: "/active-directory/methodology" },
 
           // Reconnaissance
           {
@@ -143,6 +154,19 @@ export default {
               { text: "ASREPRoasting", link: "/active-directory/attacks/credential-attacks/asreproasting" },
               { text: "Kerberoasting", link: "/active-directory/attacks/credential-attacks/kerberoasting" },
               { text: "Password Spraying", link: "/active-directory/attacks/credential-attacks/password-spraying" }
+              
+            ]
+          },
+
+            // ADCS Attacks
+          {
+            text: "ADCS Attacks",
+            collapsed: true,
+            items: [
+              { text: "ESC1", link: "/active-directory/attacks/adds-attacks/esc1" },
+              { text: "ESC2", link: "/active-directory/attacks/adds-attacks/esc2" },
+              { text: "ESC3", link: "/active-directory/attacks/adds-attacks/esc3" },
+              { text: "ESC4", link: "/active-directory/attacks/adds-attacks/esc4" },
               
             ]
           },
@@ -194,15 +218,6 @@ export default {
             ]
           },
 
-          // Defense
-          {
-            text: "Detection & Defense",
-            collapsed: true,
-            items: [
-              { text: "Detection", link: "/active-directory/defense/detection" },
-              { text: "Mitigation", link: "/active-directory/defense/mitigation" }
-            ]
-          }
         ]
       },
 
@@ -302,6 +317,7 @@ export default {
           { text: "AD Cheatsheet", link: "/cheatsheets/ad-cheatsheet" },
           { text: "Web Cheatsheet", link: "/cheatsheets/web-cheatsheet" },
           { text: "Files Transfert", link: "/cheatsheets/files-transfer-cheatsheet" },
+          { text: "Pivoting", link: "/cheatsheets/pivoting-cheatsheet" },
         ]
       }
 

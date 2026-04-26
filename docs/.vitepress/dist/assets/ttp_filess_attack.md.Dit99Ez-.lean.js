@@ -1,0 +1,1 @@
+import{_ as t,o as e,c as a}from"./chunks/framework.RPFtYYnm.js";const l=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"ttp/filess_attack.md","filePath":"ttp/filess_attack.md"}'),s={name:"ttp/filess_attack.md"};function c(r,o,n,_,i,p){return e(),a("div")}const d=t(s,[["render",c]]);export{l as __pageData,d as default};

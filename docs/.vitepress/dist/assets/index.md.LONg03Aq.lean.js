@@ -1,0 +1,1 @@
+import{_ as t,o as i,c as a,ak as s,am as r}from"./chunks/framework.RPFtYYnm.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"index.md","filePath":"index.md"}'),n={name:"index.md"};function o(l,e,c,d,u,h){return i(),a("div",null,[...e[0]||(e[0]=[s("",22)])])}const g=t(n,[["render",o]]);export{m as __pageData,g as default};

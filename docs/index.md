@@ -1,12 +1,9 @@
 <div class="hero">
 <img src="/assets/banner.png" class="banner" alt="The Hackers 237 Banner">
+<p class="hero-tagline" style="text-align: center; margin: 2em 0;">
+  Apprendre • Briser • Protéger • partager
+</p>
 </div>
-
-<div style="text-align: center; margin: 2em 0;">
-  <p class="hero-tagline">Apprendre  • Briser • Protéger  • partager</p>
-</div>
-
-
 
 ## Présentation
 
@@ -34,6 +31,42 @@ Ce projet documente des techniques utilisées dans :
 
 <div class="card">
 
+
+###  Les Fondamentaux
+
+Les bases des systèmes d'exploitation, du Web et d'active directory.
+
+- Linux
+- Windows
+- MacOS
+- Web
+- Active Directory
+
+[Voir la section →](/fundamentals/linux-fundamentals)
+
+</div>
+
+<div class="card">
+
+
+
+###  Enumération Réseau
+
+Identification et interrogation des services exposés.
+
+- Protocoles commun
+- Services
+- LDAP / SMB / DNS / Kerberos
+- Etc ...
+
+[Voir la section →](/network-enumeration/smb)
+
+</div>
+
+<div class="card">
+
+
+
 ###  Passive Recon
 
 Collecte d'informations avant exploitation.
@@ -58,26 +91,12 @@ Découverte des services exposés et des vulnérabilités.
 - Scan de vulnérabilités
 - Cartographie réseau
 
-[Voir la section →](/scanning/)
+[Voir la section →](/scanning/nmap.md)
 
 </div>
 
 <div class="card">
 
-###  Enumération Réseau
-
-Identification et interrogation des services exposés.
-
-- Protocoles commun
-- Services
-- LDAP / SMB / DNS / Kerberos
-- Etc ...
-
-[Voir la section →](/enumeration/)
-
-</div>
-
-<div class="card">
 
 ###  Web Pentesting 
 
@@ -89,7 +108,7 @@ Tests de sécurité des applications web.
 - Cheatsheets
 
 
-[Voir la section →](/web/)
+[Voir la section →](/web/index-web)
 
 </div>
 
@@ -107,27 +126,12 @@ Attaques dans les environnements Windows d'entreprise.
 - Persistence
 
 
-[Voir la section →](/active-directory/)
+[Voir la section →](/active-directory/index-active-directory)
 
 </div>
 
 <div class="card">
 
-###  Les Fondamentaux
-
-Les bases des systèmes d'exploitation, du Web et d'active directory.
-
-- Linux
-- Windows
-- MacOS
-- Web
-- Active Directory
-
-[Voir la section →](/fondamentals/)
-
-</div>
-
-<div class="card">
 
 ###  Pivoting
 
@@ -166,7 +170,7 @@ Commandes et techniques rapides pour le pentesting.
 <div style="display: flex; justify-content: center; gap: 3em; margin: 2em 0; text-align: center;">
 
 <div>
-<strong style="font-size: 2em;">10+</strong>
+<strong style="font-size: 2em;">20+</strong>
 <p>Techniques documentées</p>
 </div>
 
@@ -197,9 +201,8 @@ Les contributions sont les bienvenues.
 Pour contribuer au projet :
 
 1. Forker le dépôt
-2. Créer une branche (`git checkout -b add/nouvelle-technique`)
-3. Ajouter votre documentation en suivant le template
-4. Soumettre une Pull Request
+2. Ajouter votre documentation en suivant le template
+3. Soumettre une Pull Request
 
 ::: info Templates disponibles
 Des templates sont disponibles pour créer de nouvelles pages de manière cohérente.  
@@ -221,6 +224,15 @@ Des templates sont disponibles pour créer de nouvelles pages de manière cohér
 <a href="https://github.com/contrib">
 <img src="https://avatars.githubusercontent.com/contrib?s=80" alt="vladimirlarass">
 </a>
+
+<a href="https://github.com/dureltanga">
+<img src="https://avatars.githubusercontent.com/dureltanga?s=80" alt="dureltanga">
+</a>
+
+<a href="https://github.com/chocotos">
+<img src="https://avatars.githubusercontent.com/chocotos?s=80" alt="chocotos">
+</a>
+
 
 </div>
 
